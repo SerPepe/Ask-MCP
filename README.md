@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/ask-mcp.svg)](https://badge.fury.io/js/ask-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Add to Cursor](https://img.shields.io/badge/Add%20to-Cursor-blue?logo=cursor&logoColor=white)](https://docs.cursor.com/en/context/mcp)
+[![Add to Cursor](https://img.shields.io/badge/Add%20to-Cursor-blue?logo=cursor&logoColor=white)](cursor://anysphere.cursor-deeplink/mcp/install?name=ask-mcp&config=eyJhc2stbWNwIjp7ImNvbW1hbmQiOiJhc2stbWNwIiwiZW52Ijp7Ik9QRU5ST1VURVJfQVBJX0tFWSI6InlvdXItb3BlbnJvdXRlci1hcGkta2V5LWhlcmUifX19)
 
 A powerful Model Context Protocol (MCP) server that provides seamless access to multiple state-of-the-art AI models through OpenRouter. Perfect for integration with Cursor, Claude Desktop, and other MCP-compatible clients.
 
@@ -40,23 +40,27 @@ Free models are automatically used as fallback when payment errors occur, or can
 npm install -g ask-mcp
 ```
 
-### Option 2: From Source
+**First-time setup**: After installation, you'll need to authenticate with OpenRouter. You can either:
+1. Set your API key: `export OPENROUTER_API_KEY="your-key-here"`
+2. Or use OAuth setup (from source): `npm run setup` and press ENTER when prompted
 
-1. Clone this repository:
-```bash
-git clone https://github.com/SerPepe/Ask-MCP
-cd ask-mcp
-```
+### Option 2: From Source Installation
 
-2. Install dependencies:
-```bash
-npm install
-```
+1. **Clone and install:**
+   ```bash
+   git clone https://github.com/SerPepe/Ask-MCP
+   cd ask-mcp
+   npm install
+   npm run build
+   ```
 
-3. Build the project:
-```bash
-npm run build
-```
+2. **Configure in your MCP client** (see Configuration section below)
+
+3. **First-time setup:**
+   When you first use the MCP server, it will automatically prompt for OAuth authentication. You can also run the setup manually:
+   ```bash
+   npm run setup
+   ```
 
 ### Option 3: Use Hosted Service
 
@@ -64,16 +68,25 @@ You can use our hosted MCP server instead of running it locally. See the "Hosted
 
 ## Quick Start
 
-### Option 1: OAuth Setup (Recommended)
+### Option 1: NPM Installation (Recommended)
+```bash
+1. Install globally: npm install -g ask-mcp
+2. Configure in your MCP client (Cursor/Claude Desktop)
+3. First-time setup: When you first use the MCP server, it will automatically detect the missing API key and prompt you to authenticate with OpenRouter via OAuth. Simply press ENTER when prompted, and your browser will open automatically for secure authentication.
+4. Start using the AI models!
+```
+
+### Option 2: From Source with OAuth Setup (Auto-Authentication)
 ```bash
 1. Clone the repository
 2. Install dependencies: npm install
 3. Run OAuth setup: npm run setup
-4. Follow the interactive prompts to authenticate
-5. Test the server: npm test
+4. Press ENTER when prompted (browser will auto-open for OpenRouter OAuth)
+5. Complete authentication in browser
+6. Test the server: npm test
 ```
 
-### Option 2: Manual API Key Setup
+### Option 3: Manual API Key Setup
 ```bash
 1. Clone the repository
 2. Install dependencies: npm install
@@ -105,15 +118,12 @@ The Ask MCP tool supports two authentication methods:
 
 #### For Cursor IDE
 
-**Option A: Using NPM Package**
+**Option A: Using NPM Package (Recommended)**
 ```json
 {
   "mcpServers": {
     "ask-mcp": {
-      "command": "ask-mcp",
-      "env": {
-        "OPENROUTER_API_KEY": "your-openrouter-api-key-here"
-      }
+      "command": "ask-mcp"
     }
   }
 }
@@ -125,7 +135,19 @@ The Ask MCP tool supports two authentication methods:
   "mcpServers": {
     "ask-mcp": {
       "command": "node",
-      "args": ["/path/to/ask-mcp/dist/index.js"],
+      "args": ["/path/to/ask-mcp/dist/index.js"]
+    }
+  }
+}
+```
+
+**Option C: Manual API Key (Optional)**
+If you prefer to set the API key manually instead of using OAuth:
+```json
+{
+  "mcpServers": {
+    "ask-mcp": {
+      "command": "ask-mcp",
       "env": {
         "OPENROUTER_API_KEY": "your-openrouter-api-key-here"
       }
