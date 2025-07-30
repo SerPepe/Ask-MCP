@@ -62,9 +62,6 @@ npm install -g ask-mcp
    npm run setup
    ```
 
-### Option 3: Use Hosted Service
-
-You can use our hosted MCP server instead of running it locally. See the "Hosted Service" section below.
 
 ## Quick Start
 
@@ -148,21 +145,6 @@ If you prefer to set the API key manually instead of using OAuth:
   "mcpServers": {
     "ask-mcp": {
       "command": "ask-mcp",
-      "env": {
-        "OPENROUTER_API_KEY": "your-openrouter-api-key-here"
-      }
-    }
-  }
-}
-```
-
-**Option C: Using Hosted Service**
-```json
-{
-  "mcpServers": {
-    "ask-mcp": {
-      "command": "npx",
-      "args": ["ask-mcp-client", "--host", "https://your-hosted-service.com"],
       "env": {
         "OPENROUTER_API_KEY": "your-openrouter-api-key-here"
       }
@@ -284,142 +266,6 @@ ask-kimi {
   }
 }
 ```
-
-## OAuth Authentication
-
-The Ask MCP tool includes built-in OAuth support for secure authentication with OpenRouter.
-
-### OAuth Tools
-
-#### Generate Authorization URL
-```json
-{
-  "name": "openrouter-auth-url",
-  "arguments": {
-    "redirect_uri": "http://localhost:8080/callback",
-    "state": "optional-security-state"
-  }
-}
-```
-
-#### Exchange Authorization Code
-```json
-{
-  "name": "openrouter-exchange-code",
-  "arguments": {
-    "code": "authorization-code-from-callback",
-    "state": "optional-security-state"
-  }
-}
-```
-
-### OAuth Flow
-
-1. **Generate Authorization URL**: Use `openrouter-auth-url` to get the OAuth URL
-2. **User Authorization**: Visit the URL and authorize the application
-3. **Get Authorization Code**: Copy the code from the callback URL
-4. **Exchange Code**: Use `openrouter-exchange-code` to get your API key
-5. **Save API Key**: Set the returned API key as `OPENROUTER_API_KEY`
-
-### OAuth Environment Variables
-
-```bash
-# Optional OAuth configuration
-export OPENROUTER_CLIENT_ID="your-client-id"          # Optional
-export OPENROUTER_CLIENT_SECRET="your-client-secret"  # Optional
-export OPENROUTER_REDIRECT_URI="http://localhost:8080/callback"  # Default provided
-```
-
-## Deployment
-
-### Cloudflare Workers (Recommended)
-
-Deploy to Cloudflare Workers with Container support for scalable hosting:
-
-```bash
-# Install Wrangler CLI
-npm install -g wrangler
-
-# Login to Cloudflare
-wrangler login
-
-# Deploy container
-wrangler deploy
-```
-
-**Benefits:**
-- ✅ Serverless scaling
-- ✅ Global edge deployment
-- ✅ Cost-effective (Workers Paid plan)
-- ✅ Built-in container support
-
-### Vercel Deployment
-
-```bash
-# Install Vercel CLI
-npm install -g vercel
-
-# Deploy
-vercel
-```
-
-### Docker Deployment
-
-```bash
-# Build container
-docker build -t ask-mcp .
-
-# Run container
-docker run -p 3000:3000 -e OPENROUTER_API_KEY="your-key" ask-mcp
-```
-
-## Development
-
-### Run in Development Mode
-```bash
-npm run dev
-```
-
-### Build
-```bash
-npm run build
-```
-
-### Start Production Server
-```bash
-npm start
-```
-
-## Hosted Service
-
-For users who prefer not to run the MCP server locally, we provide a hosted service option.
-
-### Benefits of Hosted Service
-- No local installation required
-- Always up-to-date with latest features
-- Reduced resource usage on your machine
-- Automatic scaling and reliability
-
-### Using Hosted Service
-
-1. **Get the hosted endpoint**: Contact us for the hosted service URL
-2. **Configure your MCP client** to use the hosted endpoint
-3. **Add your OpenRouter API key** in the configuration
-
-### Self-Hosting with Docker
-
-You can also host your own instance using Docker:
-
-```bash
-# Clone the repository
-git clone https://github.com/SerPepe/Ask-MCP
-cd ask-mcp
-
-# Build and run with Docker Compose
-docker-compose up -d
-```
-
-The service will be available at `http://localhost:3000`
 
 ## Troubleshooting
 

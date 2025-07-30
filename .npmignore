@@ -3,20 +3,12 @@ src/
 tsconfig.json
 
 # Development files
-test-mcp-client.js
-test-oauth.js
-test.js
 setup-oauth.js
 
 # Environment files
 .env
 .env.local
 .env.*.local
-
-# Docker files
-Dockerfile
-docker-compose.yml
-wrangler.toml
 
 # Development dependencies
 node_modules/
@@ -38,5 +30,4 @@ Thumbs.db
 .git/
 .gitignore
 
-# Example files
-mcp-config-example.json
+# Keep example files for users
