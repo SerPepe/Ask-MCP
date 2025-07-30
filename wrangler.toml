@@ -1,0 +1,33 @@
+name = "ask-mcp-tool"
+main = "dist/index.js"
+compatibility_date = "2024-01-15"
+node_compat = true
+
+[env.production]
+name = "ask-mcp-tool-prod"
+
+[env.staging]
+name = "ask-mcp-tool-staging"
+
+# Environment variables
+[vars]
+ENVIRONMENT = "production"
+
+# Secrets (set via wrangler secret put)
+# OPENROUTER_API_KEY = "your-api-key"
+# OPENROUTER_CLIENT_ID = "your-client-id"
+# OPENROUTER_CLIENT_SECRET = "your-client-secret"
+
+# Container configuration
+[placement]
+hints = ["smart_placement"]
+
+# Resource limits
+[limits]
+cpu_ms = 50
+memory_mb = 128
+
+# Custom domains (optional)
+# [route]
+# pattern = "ask-mcp.your-domain.com/*"
+# zone_name = "your-domain.com"

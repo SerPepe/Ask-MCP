@@ -1,0 +1,84 @@
+{
+  "name": "ask-mcp",
+  "version": "1.0.0",
+  "description": "A powerful MCP server providing access to multiple AI models (Grok, Gemini, Kimi, Qwen, GLM) through OpenRouter. Perfect for Cursor, Claude Desktop, and other MCP clients.",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "ask-mcp": "dist/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "openrouter",
+    "grok",
+    "gemini",
+    "cursor",
+    "claude",
+    "anthropic",
+    "typescript",
+    "llm",
+    "chatbot"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ask-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/ask-mcp/issues"
+  },
+  "homepage": "https://github.com/yourusername/ask-mcp#readme",
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "dist/**/*",
+    "README.md",
+    "mcp-config-example.json"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "test": "node test.js",
+    "prepublishOnly": "npm run build",
+    "prepare": "npm run build",
+    "setup": "npm run build && node setup-oauth.js"
+  },
+  "keywords": [
+    "mcp",
+    "ai",
+    "openrouter",
+    "grok",
+    "gemini",
+    "model-context-protocol",
+    "cursor",
+    "claude"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ask-mcp.git"
+  },
+  "homepage": "https://github.com/yourusername/ask-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/yourusername/ask-mcp/issues"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.4.0",
+    "axios": "^1.6.0",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "open": "^10.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}
