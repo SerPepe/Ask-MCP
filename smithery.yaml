@@ -1,4 +1,15 @@
-version: 1
-start:
-  command: ["npm", "start"]
-  port: 8080
+runtime: "container"
+build:
+  dockerfile: "Dockerfile"
+  dockerBuildPath: "."
+startCommand:
+  type: "http"
+  configSchema:
+    type: "object"
+    properties:
+      OPENROUTER_API_KEY:
+        type: "string"
+        description: "Your OpenRouter API key for accessing AI models"
+    required: ["OPENROUTER_API_KEY"]
+  exampleConfig:
+    OPENROUTER_API_KEY: "sk-or-v1-example123"

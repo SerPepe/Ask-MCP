@@ -17,7 +17,10 @@ RUN npm run build
 # Set production environment
 ENV NODE_ENV=production
 
-# Expose port (MCP servers typically use stdio, but we'll expose 8080 for potential HTTP usage)
+# Set HTTP transport for Smithery deployment
+ENV MCP_TRANSPORT=http
+
+# Expose port
 EXPOSE 8080
 
 # Start the server

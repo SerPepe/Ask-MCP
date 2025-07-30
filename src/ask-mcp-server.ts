@@ -1,11 +1,13 @@
 import dotenv from 'dotenv';
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { CallToolRequestSchema, ListToolsRequestSchema, CallToolRequest } from '@modelcontextprotocol/sdk/types.js';
 import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { URL } from 'url';
 import readline from 'readline';
 import http from 'http';
 import { createHash, randomBytes } from 'crypto';
@@ -277,9 +279,57 @@ export class AskMCPServer {
     return response.data.choices[0].message.content;
   }
 
+  private parseConfigFromQuery(url: string): Record<string, string> {
+    const urlObj = new URL(url, 'http://localhost');
+    const config: Record<string, string> = {};
+    
+    // Parse dot-notation query parameters into nested object
+    for (const [key, value] of urlObj.searchParams.entries()) {
+      config[key] = value;
+    }
+    
+    return config;
+  }
+
   public async listen() {
-    const transport = new StdioServerTransport();
-    await this.server.connect(transport);
+    const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+    
+    if (process.env.MCP_TRANSPORT === 'stdio') {
+      const transport = new StdioServerTransport();
+      await this.server.connect(transport);
+    } else {
+      // HTTP transport for Smithery
+      const httpServer = http.createServer(async (req, res) => {
+        // Handle CORS
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+        
+        if (req.method === 'OPTIONS') {
+          res.writeHead(200);
+          res.end();
+          return;
+        }
+        
+        if (req.url?.startsWith('/mcp')) {
+          // Parse configuration from query parameters (Smithery format)
+          const config = this.parseConfigFromQuery(req.url);
+          if (config.OPENROUTER_API_KEY && !this.openRouterApiKey) {
+            this.openRouterApiKey = config.OPENROUTER_API_KEY;
+          }
+          
+          const transport = new SSEServerTransport('/mcp', res);
+          await this.server.connect(transport);
+        } else {
+          res.writeHead(404);
+          res.end('Not Found');
+        }
+      });
+      
+      httpServer.listen(port, () => {
+        console.log(`MCP server listening on port ${port}`);
+      });
+    }
   }
 
   public async handleAsk(query: string, system_prompt?: string, free?: boolean): Promise<string> {
