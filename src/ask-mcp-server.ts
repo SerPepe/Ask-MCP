@@ -82,6 +82,7 @@ export class AskMCPServer {
     });
 
     this.openRouterApiKey = process.env.OPENROUTER_API_KEY || '';
+    
     if (!this.openRouterApiKey) {
       console.log('🔑 No OpenRouter API key found. Starting OAuth setup...');
       this.oauthSetupPromise = this.setupOAuth();

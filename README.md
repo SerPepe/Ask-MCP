@@ -198,6 +198,8 @@ Each model has specific strengths:
 The tool includes intelligent error handling:
 1. **Automatic Fallback**: When payment/quota errors occur, the tool automatically retries with free model variants
 2. **Manual Free Mode**: Use the `free: true` parameter to directly use free models
+
+
 3. **Error Recovery**: Comprehensive error messages help diagnose issues
 
 ### With System Prompt
