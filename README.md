@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/ask-mcp.svg)](https://badge.fury.io/js/ask-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=ask-mcp&config=JTdCJTIyY29tbWFuZCUyMiUzQSUyMmFzay1tY3AlMjIlMkMlMjJlbnYlMjIlM0ElN0IlMjJPUEVOUk9VVEVSX0FQSV9LRVklMjIlM0ElMjJ5b3VyX29wZW5yb3V0ZXJfYXBpX2tleV9oZXJlJTIyJTdEJTdE)
+[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=ask-mcp&config=eyJjb21tYW5kIjoiYXNrLW1jcCIsImVudiI6eyJPUEVOUk9VVEVSX0FQSV9LRVkiOiJ5b3VyX29wZW5yb3V0ZXJfYXBpX2tleV9oZXJlIn19)
 
 A powerful Model Context Protocol (MCP) server that provides seamless access to multiple state-of-the-art AI models through OpenRouter. Perfect for integration with Cursor, Claude Desktop, and other MCP-compatible clients.
 
