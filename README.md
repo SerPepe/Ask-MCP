@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/ask-mcp.svg)](https://badge.fury.io/js/ask-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Add to Cursor](https://img.shields.io/badge/Add%20to-Cursor-blue?logo=cursor&logoColor=white)](https://docs.cursor.com/en/context/mcp)
 
 A powerful Model Context Protocol (MCP) server that provides seamless access to multiple state-of-the-art AI models through OpenRouter. Perfect for integration with Cursor, Claude Desktop, and other MCP-compatible clients.
 

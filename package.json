@@ -21,16 +21,16 @@
     "llm",
     "chatbot"
   ],
-  "author": "Your Name <your.email@example.com>",
+  "author": "SerPepe serpepexbtt@proton.me",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/ask-mcp.git"
+    "url": "https://github.com/SerPepe/ask-mcp.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/ask-mcp/issues"
+    "url": "https://github.com/SerPepe/ask-mcp/issues"
   },
-  "homepage": "https://github.com/yourusername/ask-mcp#readme",
+  "homepage": "https://github.com/SerPepe/ask-mcp#readme",
   "files": [
     "dist/",
     "README.md",
@@ -58,15 +58,15 @@
     "cursor",
     "claude"
   ],
-  "author": "Your Name",
+  "author": "SerPepe serpepexbtt@proton.me",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/ask-mcp.git"
+    "url": "https://github.com/SerPepe/ask-mcp.git"
   },
-  "homepage": "https://github.com/yourusername/ask-mcp#readme",
+  "homepage": "https://github.com/SerPepe/ask-mcp#readme",
   "bugs": {
-    "url": "https://github.com/yourusername/ask-mcp/issues"
+    "url": "https://github.com/SerPepe/ask-mcp/issues"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.4.0",
